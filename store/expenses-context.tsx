@@ -2,14 +2,14 @@
 import { createContext, useReducer, ReactNode } from 'react';
 
 // Local imports
-import { Expense } from '../types';
+import { Expense, ExpenseData } from '../types';
 import { DUMMY_EXPENSES } from '../data/dummy-expenses';
 
 export const ExpensesContext = createContext({
   expenses: [],
-  addExpense: (expense: Expense) => {},
+  addExpense: (expense: ExpenseData) => {},
   deleteExpense: (id: string) => {},
-  updateExpense: (id: string, expense: Expense) => {},
+  updateExpense: (id: string, expense: ExpenseData) => {},
 });
 
 const expensesReducer = (state: any, action: any) => {
@@ -44,7 +44,7 @@ interface ExpensesContextProviderProps {
 const ExpensesContextProvider: React.FC<ExpensesContextProviderProps> = ({ children }) => {
   const [ expensesState, dispatch ] = useReducer(expensesReducer, DUMMY_EXPENSES);
 
-  const addExpense = (expense: Expense) => {
+  const addExpense = (expense: ExpenseData) => {
     dispatch({ type: 'ADD', payload: expense }); 
   };
 
@@ -52,7 +52,7 @@ const ExpensesContextProvider: React.FC<ExpensesContextProviderProps> = ({ child
     dispatch({ type: 'DELETE', payload: id }); 
   };
 
-  const updateExpense = (id: string, expense: Expense) => {
+  const updateExpense = (id: string, expense: ExpenseData) => {
     dispatch({ type: 'UPDATE', payload: { id: id, data: expense } }); 
   };
 

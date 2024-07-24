@@ -7,6 +7,12 @@ export interface Expense {
   date: Date;
 };
 
+export interface ExpenseData {
+  description: string;
+  amount: number;
+  date: Date;
+};
+
 export interface ExpensesSummaryProps {
   expenses: Array<Expense>;
   periodName: string;

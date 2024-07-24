@@ -4,12 +4,13 @@ import { useContext, useLayoutEffect } from 'react';
 
 // Local imports
 import { 
+  ExpenseData,
   ManageExpenseRouteProp, 
   ManageExpenseNavigationProp 
 } from '../types';
 import GlobalStyles, { Colors } from '../constants/styles';
 import IconButton from '../components/ui/IconButton';
-import Button from '../components/ui/Button';
+import ExpenseForm from '../components/ManageExpense/ExpenseForm';
 import { ExpensesContext } from '../store/expenses-context';
 
 
@@ -42,67 +43,50 @@ const ManageExpense = ({
     navigation.goBack();
   };
 
-  const confirmHandler = () => {
+  const confirmHandler = (expenseData: ExpenseData) => {
     if (isEditing) {
-      expensesContext.updateExpense(editedExpenseId,{
-        id: editedExpenseId,
-        description: 'test!!!!',
-        amount: 1000,
-        date: new Date(2024, 1, 1),
-      });
+      expensesContext.updateExpense(editedExpenseId, expenseData);
     }
     else {
-      expensesContext.addExpense({
-        id:'testId', 
-        description: 'test', 
-        amount: 100, 
-        date: new Date(2024, 1, 1)
-      });
+      expensesContext.addExpense(expenseData);
     }
     navigation.goBack();
   };
 
 
   return (
-    <View style={styles.container}>
-      <View style={styles.buttonContainer}>
-        <Button style={styles.button} mode='flat' onPress={cancelHandler}>
-          Cancel
-        </Button>
-        <Button style={styles.button} onPress={confirmHandler}>
-          {isEditing ? 'Update' : 'Add'}
-        </Button>
+    <View style={GlobalStyles.fullScreenContainer}>
+      <View style={styles.container}>
+        <ExpenseForm 
+          submitButtonLabel={isEditing ? 'Update' : 'Add'} 
+          onSubmit={confirmHandler}
+          onCancel={cancelHandler} 
+        />
+        {isEditing && (
+          <View style={styles.deleteContainer}>
+            <IconButton
+              icon='trash-outline'
+              color={Colors.warning}
+              size={36}
+              onPress={() => deleteExpenseHandler(editedExpenseId)}
+            />
+          </View>
+        )}
       </View>
-      {isEditing && (
-        <View style={styles.deleteContainer}>
-          <IconButton
-            icon='trash-outline'
-            color={Colors.warning}
-            size={36}
-            onPress={() => deleteExpenseHandler(editedExpenseId)}
-          />
-        </View>
-      )}
     </View>
-  )
+  );
 };
 
 export default ManageExpense;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    margin: 12,
     padding: 24,
     backgroundColor: Colors.light,
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  button: {
-    minWidth: 120,
-    marginHorizontal: 8,
+    borderRadius: 10,
+    borderWidth: 4,
+    borderColor: Colors.dark,
   },
   deleteContainer: {
     marginTop: 16,
