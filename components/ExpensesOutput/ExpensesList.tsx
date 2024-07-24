@@ -1,5 +1,5 @@
 // Global imports
-import { FlatList, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { FlatList, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 
 // Local imports
 import { DUMMY_EXPENSES } from '../../data/dummy-expenses';
@@ -7,6 +7,9 @@ import { Expense } from '../../types';
 import ExpenseItem from './ExpenseItem';
 import GlobalStyles, { Colors } from '../../constants/styles';
 
+interface ExpensesListProps {
+  expenses: Array<Expense>;
+};
 
 const renderExpenseItem = (itemData: any) => {
   return (
@@ -14,11 +17,11 @@ const renderExpenseItem = (itemData: any) => {
   );
 };
 
-const ExpensesList = ({expenses}: any) => {
+const ExpensesList: React.FC<ExpensesListProps> = ({ expenses }) => {
   return (
-    <View style={GlobalStyles.screenWrapper}>
+    <View style={GlobalStyles.innerScreenWrapper}>
       <FlatList
-        data={DUMMY_EXPENSES}
+        data={expenses}
         renderItem={renderExpenseItem}
         keyExtractor={(item) => item.id}
       />
@@ -27,4 +30,3 @@ const ExpensesList = ({expenses}: any) => {
 };
 
 export default ExpensesList;
-

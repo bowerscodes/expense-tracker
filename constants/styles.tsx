@@ -9,25 +9,13 @@ export const Colors = {
 };
 
 const GlobalStyles = StyleSheet.create({
+  body: {
+    fontSize: 14,
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  screenWrapper: {
-    backgroundColor: Colors.background,
-    paddingHorizontal: 12
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  header: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  body: {
-    fontSize: 14,
   },
   expenseHeader: {
     flexDirection: 'row', 
@@ -39,7 +27,22 @@ const GlobalStyles = StyleSheet.create({
     borderBottomColor: Colors.dark,
     borderBottomWidth: 2,
   },
-
+  fullScreenContainer: {
+    backgroundColor: Colors.background,
+    flex: 1,
+  },
+  header: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  innerScreenWrapper: {
+    backgroundColor: Colors.background,
+    paddingHorizontal: 12
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
 });
 
 export default GlobalStyles;

@@ -1,14 +1,30 @@
 // Global imports
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 // Local imports
-import GlobalStyles, { Colors } from '../../constants/styles';
+import { Colors } from '../../constants/styles';
 import { Expense } from '../../types';
 import { getFormattedDate } from '../../utils/date';
+import { ManageExpenseNavigationProp } from '../../types';
 
-const ExpenseItem = ({ description, amount, date}: Expense) => {
+
+const ExpenseItem = ({ id, description, amount, date }: Expense) => {
+
+  const navigation = useNavigation<ManageExpenseNavigationProp>();
+
+  const expensePressHandler = () => {
+    navigation.navigate('ManageExpense', {
+      expenseId: id
+    });
+  };
+
   return (
-    <Pressable>
+    <Pressable 
+      onPress={expensePressHandler} 
+      style={({ pressed }) => pressed && styles.pressed}
+    >
       <View style={[styles.expenseCard]}>
         <View style={styles.detailsContainer}>
           <Text style={styles.description}>{description}</Text>
@@ -25,6 +41,9 @@ const ExpenseItem = ({ description, amount, date}: Expense) => {
 export default ExpenseItem;
 
 const styles = StyleSheet.create({
+  pressed: {
+    opacity: 0.75,
+  },
   detailsContainer: {
     flex: 1,
     padding: 5,
@@ -46,7 +65,7 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 16,
-    fontWeight: '500', 
+    fontWeight: '600', 
     color: Colors.dark,
   },
   date: {
@@ -57,7 +76,6 @@ const styles = StyleSheet.create({
   amountContainer: {
     flexDirection: 'column',
     backgroundColor: Colors.light,
-    // padding: 5,
     height: '90%',
     width: 120,
     alignItems: 'center',
