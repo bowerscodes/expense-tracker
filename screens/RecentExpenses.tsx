@@ -1,9 +1,10 @@
 // Global imports
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { View } from 'react-native';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 
 // Local imports
+import { fetchExpenses } from '../utils/http';
 import ExpensesOutput from '../components/ExpensesOutput/ExpensesOutput';
 import { ExpensesContext } from '../store/expenses-context';
 import { Expense } from '../types';
@@ -13,6 +14,15 @@ import GlobalStyles from '../constants/styles';
 const RecentExpenses = () => {
   const tabBarHeight = useBottomTabBarHeight();
   const expensesContext = useContext(ExpensesContext);
+
+  useEffect(() => {
+    const getExpenses = async () => {
+      const expenses = await fetchExpenses();
+      expensesContext.setExpenses(expenses);
+    };
+
+    getExpenses();
+  }, []);
 
   const today = new Date();
   const date7DaysAgo = getDateMinusDays(today, 7);
@@ -30,7 +40,7 @@ const RecentExpenses = () => {
         fallbackText={'No recent expenses to display'}
       />
     </View>
-  )
+  );
 };
 
 export default RecentExpenses;

@@ -4,6 +4,7 @@ import { useContext, useLayoutEffect } from 'react';
 
 // Local imports
 import { 
+  Expense, 
   ExpenseData,
   ManageExpenseRouteProp, 
   ManageExpenseNavigationProp 
@@ -12,6 +13,7 @@ import GlobalStyles, { Borders, Colors } from '../constants/styles';
 import IconButton from '../components/ui/IconButton';
 import ExpenseForm from '../components/ManageExpense/ExpenseForm';
 import { ExpensesContext } from '../store/expenses-context';
+import { storeExpense, updateExpense, deleteExpense } from '../utils/http';
 
 
 const ManageExpense = ({ 
@@ -38,8 +40,9 @@ const ManageExpense = ({
   }, [navigation, isEditing]);
 
 
-  const deleteExpenseHandler = (id: string) => {
-    expensesContext.deleteExpense(id);
+  const deleteExpenseHandler = async (editedExpenseId: string) => {
+    expensesContext.deleteExpense(editedExpenseId);
+    await deleteExpense(editedExpenseId);
     navigation.goBack();
   };
 
@@ -47,12 +50,14 @@ const ManageExpense = ({
     navigation.goBack();
   };
 
-  const confirmHandler = (expenseData: ExpenseData) => {
+  const confirmHandler = async (expenseData: ExpenseData) => {
     if (isEditing) {
       expensesContext.updateExpense(editedExpenseId, expenseData);
+      await updateExpense(editedExpenseId, expenseData);
     }
     else {
-      expensesContext.addExpense(expenseData);
+      const id = await storeExpense(expenseData);
+      expensesContext.addExpense({...expenseData, id: id});
     }
     navigation.goBack();
   };

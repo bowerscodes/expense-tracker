@@ -5,14 +5,14 @@ import { StyleSheet, Text, View } from 'react-native';
 // Local imports
 import Input from './Input';
 import Button from '../../components/ui/Button';
-import { ExpenseData } from '../../types';
+import { Expense, ExpenseData } from '../../types';
 import { Colors, Typography } from '../../constants/styles';
 import { getFormattedDate } from '@/utils/date';
 
 interface ExpenseFormProps {
   submitButtonLabel: string;
   onCancel: () => void;
-  onSubmit: (expenseData: ExpenseData) => void;
+  onSubmit: (expenseData: Expense | ExpenseData) => void;
   defaultValues?: ExpenseData;
 };
 

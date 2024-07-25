@@ -7,7 +7,8 @@ import { DUMMY_EXPENSES } from '../data/dummy-expenses';
 
 interface ExpensesContextType {
   expenses: Array<Expense>;
-  addExpense: (expense: ExpenseData) => void;
+  addExpense: (expense: Expense | ExpenseData) => void;
+  setExpenses: (expenses: Array<Expense>) => void;
   deleteExpense: (id: string) => void;
   updateExpense: (id: string, expense: ExpenseData) => void;
 };
@@ -15,6 +16,7 @@ interface ExpensesContextType {
 export const ExpensesContext = createContext<ExpensesContextType>({
   expenses: [],
   addExpense: (expense: ExpenseData) => {},
+  setExpenses: (expenses: Array<Expense>) => {},
   deleteExpense: (id: string) => {},
   updateExpense: (id: string, expense: ExpenseData) => {},
 });
@@ -22,8 +24,11 @@ export const ExpensesContext = createContext<ExpensesContextType>({
 const expensesReducer = (state: any, action: any) => {
   switch (action.type) {
     case 'ADD':
-      const id = new Date().toString() + Math.random().toString();
-      return [{ ...action.payload, id: id }, ...state];
+    return [{ ...action.payload }, ...state];
+
+    case 'SET':
+      const inverted = action.payload.reverse();
+      return inverted;
 
     case 'UPDATE':
       const updatedExpenseIndex = state.findIndex(
@@ -49,11 +54,15 @@ interface ExpensesContextProviderProps {
 
 
 const ExpensesContextProvider: React.FC<ExpensesContextProviderProps> = ({ children }) => {
-  const [ expensesState, dispatch ] = useReducer(expensesReducer, DUMMY_EXPENSES);
+  const [ expensesState, dispatch ] = useReducer(expensesReducer, []);
 
   const addExpense = (expense: ExpenseData) => {
     dispatch({ type: 'ADD', payload: expense }); 
   };
+
+  const setExpenses = (expenses: Array<Expense>) => {
+    dispatch({ type: 'SET', payload: expenses });
+  }
 
   const deleteExpense = (id: string) => {
     dispatch({ type: 'DELETE', payload: id }); 
@@ -66,6 +75,7 @@ const ExpensesContextProvider: React.FC<ExpensesContextProviderProps> = ({ child
   const value = {
     expenses: expensesState,
     addExpense: addExpense,
+    setExpenses: setExpenses,
     deleteExpense: deleteExpense,
     updateExpense: updateExpense,
   };
