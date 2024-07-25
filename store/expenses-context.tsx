@@ -3,7 +3,6 @@ import { createContext, useReducer, ReactNode } from 'react';
 
 // Local imports
 import { Expense, ExpenseData } from '../types';
-import { DUMMY_EXPENSES } from '../data/dummy-expenses';
 
 interface ExpensesContextType {
   expenses: Array<Expense>;
