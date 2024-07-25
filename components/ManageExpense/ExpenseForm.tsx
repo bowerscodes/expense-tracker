@@ -43,20 +43,15 @@ const ExpenseForm = ({ submitButtonLabel, onCancel, onSubmit, defaultValues }: E
   };
 
   const submitHandler = () => {
-    console.log('Submit handler called');
     const expenseData = {
       amount: +inputs.amount.value,
       date: new Date(inputs.date.value),
       description: inputs.description.value
     };
 
-    console.log('Expense Data:', expenseData);
-
     const amountIsValid = !isNaN(expenseData.amount) && expenseData.amount > 0;
     const dateIsValid = expenseData.date.toString() !== 'Invalid Date';
     const descriptionIsValid = expenseData.description.trim().length > 0;
-
-    console.log('Validation:', { amountIsValid, dateIsValid, descriptionIsValid });
 
     if (!amountIsValid || !dateIsValid || !descriptionIsValid) {
       setInputs((currentInputs) => {
