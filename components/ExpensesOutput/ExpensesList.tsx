@@ -1,8 +1,7 @@
 // Global imports
-import { FlatList, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 
 // Local imports
-import { DUMMY_EXPENSES } from '../../data/dummy-expenses';
 import { Expense } from '../../types';
 import ExpenseItem from './ExpenseItem';
 import GlobalStyles, { Colors } from '../../constants/styles';

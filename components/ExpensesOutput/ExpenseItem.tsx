@@ -1,10 +1,9 @@
 // Global imports
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
 
 // Local imports
-import { Colors } from '../../constants/styles';
+import { Borders, Colors, Typography } from '../../constants/styles';
 import { Expense } from '../../types';
 import { getFormattedDate } from '../../utils/date';
 import { ManageExpenseNavigationProp } from '../../types';
@@ -57,20 +56,20 @@ const styles = StyleSheet.create({
     borderRightColor: Colors.dark,
     borderLeftColor: Colors.light,
     borderTopColor: Colors.light,
-    borderWidth: 2,
-    borderRadius: 10,
+    borderWidth: Borders.widthExpenseItem,
+    borderRadius: Borders.radiusDefault,
     maxHeight: 80,
     padding: 5,
     margin: 6,
   },
   description: {
-    fontSize: 16,
+    fontSize: Typography.headerSize,
     fontWeight: '600', 
-    color: Colors.dark,
+    color: Colors.light,
   },
   date: {
-    fontSize: 12,
-    color: Colors.dark,
+    fontSize: Typography.bodySize,
+    color: Colors.light,
     fontWeight: '600', 
   },
   amountContainer: {
@@ -80,14 +79,14 @@ const styles = StyleSheet.create({
     width: 120,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 10,
+    borderRadius: Borders.radiusDefault,
     borderBottomColor: Colors.dark,
     borderRightColor: Colors.dark,
     borderBottomWidth: 2,
     borderRightWidth: 2,
   },
   amount: {
-    fontSize: 16,
+    fontSize: Typography.headerSize,
     fontWeight: '900',
     color: Colors.dark,
   },

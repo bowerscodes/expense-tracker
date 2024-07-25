@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import ExpensesSummary from './ExpensesSummary';
 import ExpensesList from './ExpensesList';
 import { Expense } from '../../types';
-import { Colors } from '../../constants/styles';
+import { Colors, Typography } from '../../constants/styles';
 
 interface ExpensesOutputProps {
   expenses: Array<Expense>;
@@ -37,7 +37,7 @@ export default ExpensesOutput;
 const styles = StyleSheet.create({
   fallbackText: {
     color: Colors.dark,
-    fontSize: 20,
+    fontSize: Typography.headerSize,
     fontWeight: 'bold',
     textAlign: 'center',
     marginTop: 32,

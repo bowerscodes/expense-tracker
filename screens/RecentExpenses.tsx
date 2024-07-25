@@ -1,6 +1,6 @@
 // Global imports
 import { useContext } from 'react';
-import { Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native';
 
 // Local imports
 import ExpensesOutput from '../components/ExpensesOutput/ExpensesOutput';
@@ -22,7 +22,7 @@ const RecentExpenses = () => {
   });
 
   return (
-    <View 
+    <SafeAreaView 
       style={GlobalStyles.fullScreenContainer}
     >
       <ExpensesOutput 
@@ -30,7 +30,7 @@ const RecentExpenses = () => {
         expensesPeriod={'recent'}
         fallbackText={'No recent expenses to display'}
       />
-    </View>
+    </SafeAreaView>
   )
 };
 

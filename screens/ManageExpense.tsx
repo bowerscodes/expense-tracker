@@ -8,7 +8,7 @@ import {
   ManageExpenseRouteProp, 
   ManageExpenseNavigationProp 
 } from '../types';
-import GlobalStyles, { Colors } from '../constants/styles';
+import GlobalStyles, { Borders, Colors } from '../constants/styles';
 import IconButton from '../components/ui/IconButton';
 import ExpenseForm from '../components/ManageExpense/ExpenseForm';
 import { ExpensesContext } from '../store/expenses-context';
@@ -84,8 +84,8 @@ const styles = StyleSheet.create({
     margin: 12,
     padding: 24,
     backgroundColor: Colors.light,
-    borderRadius: 10,
-    borderWidth: 4,
+    borderRadius: Borders.radiusDefault,
+    borderWidth: Borders.widthDefault,
     borderColor: Colors.dark,
   },
   deleteContainer: {

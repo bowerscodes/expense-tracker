@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 // Local imports
 import { ExpensesSummaryProps } from '../../types';
-import GlobalStyles, { Colors } from '../../constants/styles';
+import GlobalStyles, { Colors, Typography } from '../../constants/styles';
 
 
 const ExpensesSummary = ({ expenses, periodName }: ExpensesSummaryProps) => {
@@ -33,12 +33,12 @@ export default ExpensesSummary;
 
 const styles = StyleSheet.create({
   period: {
-    fontSize: 20,
+    fontSize: Typography.headerSize,
     fontWeight: 'bold',
     color: Colors.light,
   },
   sum: {
-    fontSize: 24,
+    fontSize: Typography.titleSize,
     fontWeight: 'bold',
     color: Colors.light,
   },

@@ -2,7 +2,7 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 // Local imports
-import { Colors } from '../../constants/styles';
+import { Borders, Colors } from '../../constants/styles';
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -29,7 +29,7 @@ export default Button;
 
 const styles = StyleSheet.create({
   button: {
-    borderRadius: 4,
+    borderRadius: Borders.radiusButton,
     padding: 8,
     backgroundColor: Colors.dark,
   },
@@ -47,6 +47,6 @@ const styles = StyleSheet.create({
   pressed: {
     opacity: 0.75,
     backgroundColor: Colors.primary,
-    borderRadius: 4,
+    borderRadius: Borders.radiusButton,
   },
 });

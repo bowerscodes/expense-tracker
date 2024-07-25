@@ -2,7 +2,7 @@
 import { StyleSheet, Text, TextInput, TextInputProps, TextStyle, View, ViewStyle } from 'react-native';
 
 // Local imports
-import GLobalStyles, { Colors } from '../../constants/styles';
+import GlobalStyles, { Borders, Colors, Typography } from '../../constants/styles';
 
 interface InputProps {
   label: string;
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   label: {
-    fontSize: 12,
+    fontSize: Typography.bodySize,
     fontWeight: 'bold',
     color: Colors.dark,
     marginBottom: 4,
@@ -46,10 +46,11 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
     color: Colors.light,
     padding: 6,
-    borderRadius: 6,
-    fontSize: 18,
+    borderRadius: Borders.radiusInput,
+    fontSize: Typography.headerSize,
+    fontWeight: '500',
     borderColor: Colors.dark,
-    borderWidth: 3,
+    borderWidth: Borders.widthInput,
   },
   inputMultiLine: {
     minHeight: 100,

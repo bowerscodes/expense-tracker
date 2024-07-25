@@ -6,7 +6,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Input from './Input';
 import Button from '../../components/ui/Button';
 import { ExpenseData } from '../../types';
-import { Colors } from '../../constants/styles';
+import { Colors, Typography } from '../../constants/styles';
 
 interface ExpenseFormProps {
   submitButtonLabel: string;
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   title: {
-    fontSize: 24,
+    fontSize: Typography.titleSize,
     fontWeight: 'bold',
     color: Colors.dark,
     textAlign: 'center',
