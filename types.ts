@@ -1,10 +1,7 @@
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp } from '@react-navigation/native';
-export interface Expense {
+export interface Expense extends ExpenseData {
   id: string;
-  description: string;
-  amount: number;
-  date: Date;
 };
 
 export interface ExpenseData {

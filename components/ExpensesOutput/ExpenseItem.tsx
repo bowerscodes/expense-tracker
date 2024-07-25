@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     borderRightColor: Colors.dark,
     borderLeftColor: Colors.light,
     borderTopColor: Colors.light,
-    borderWidth: Borders.widthExpenseItem,
+    borderWidth: Borders.widthSmall,
     borderRadius: Borders.radiusDefault,
     maxHeight: 80,
     padding: 5,

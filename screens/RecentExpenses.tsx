@@ -1,6 +1,7 @@
 // Global imports
 import { useContext } from 'react';
-import { SafeAreaView } from 'react-native';
+import { View } from 'react-native';
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 
 // Local imports
 import ExpensesOutput from '../components/ExpensesOutput/ExpensesOutput';
@@ -10,7 +11,7 @@ import { getDateMinusDays } from '../utils/date';
 import GlobalStyles from '../constants/styles';
 
 const RecentExpenses = () => {
-
+  const tabBarHeight = useBottomTabBarHeight();
   const expensesContext = useContext(ExpensesContext);
 
   const today = new Date();
@@ -22,15 +23,13 @@ const RecentExpenses = () => {
   });
 
   return (
-    <SafeAreaView 
-      style={GlobalStyles.fullScreenContainer}
-    >
+    <View style={[GlobalStyles.fullScreenContainer, { paddingTop: 0, paddingBottom: tabBarHeight + 20 }]}>
       <ExpensesOutput 
         expenses={recentExpenses} 
         expensesPeriod={'recent'}
         fallbackText={'No recent expenses to display'}
       />
-    </SafeAreaView>
+    </View>
   )
 };
 

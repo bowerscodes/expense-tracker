@@ -5,7 +5,7 @@ export const Colors = {
   light: '#F1EDEE',
   primary: '#8AA29E',
   background: '#FFDCCC',
-  warning: '#DB5461'
+  alert: '#DB5461'
 };
 
 export const Borders = {
@@ -14,7 +14,7 @@ export const Borders = {
   radiusInput: 6,
   widthDefault: 4,
   widthInput: 3,
-  widthExpenseItem: 2,
+  widthSmall: 2,
 };
 
 export const Typography = {
@@ -36,7 +36,7 @@ const GlobalStyles = StyleSheet.create({
     flexDirection: 'row', 
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 20,
+    paddingHorizontal: 24,
     paddingVertical: 10,
     backgroundColor: Colors.primary,
     borderBottomColor: Colors.dark,
@@ -45,7 +45,6 @@ const GlobalStyles = StyleSheet.create({
   fullScreenContainer: {
     backgroundColor: Colors.background,
     flex: 1,
-    paddingBottom: 40,
   },
   header: {
     fontSize: Typography.headerSize,

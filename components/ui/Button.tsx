@@ -35,11 +35,14 @@ const styles = StyleSheet.create({
   },
   flat: {
     backgroundColor: 'transparent',
+    borderWidth: Borders.widthSmall,
+    borderColor: Colors.dark,
+    padding: 6
   },
   buttonText: {
     color: Colors.light,
     textAlign: 'center',
-    fontWeight: '500',
+    fontWeight: '600',
   },
   flatText: {
     color: Colors.dark,

@@ -5,7 +5,14 @@ import { createContext, useReducer, ReactNode } from 'react';
 import { Expense, ExpenseData } from '../types';
 import { DUMMY_EXPENSES } from '../data/dummy-expenses';
 
-export const ExpensesContext = createContext({
+interface ExpensesContextType {
+  expenses: Array<Expense>;
+  addExpense: (expense: ExpenseData) => void;
+  deleteExpense: (id: string) => void;
+  updateExpense: (id: string, expense: ExpenseData) => void;
+};
+
+export const ExpensesContext = createContext<ExpensesContextType>({
   expenses: [],
   addExpense: (expense: ExpenseData) => {},
   deleteExpense: (id: string) => {},

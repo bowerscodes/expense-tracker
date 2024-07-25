@@ -6,11 +6,12 @@ import GlobalStyles, { Borders, Colors, Typography } from '../../constants/style
 
 interface InputProps {
   label: string;
+  isValid: boolean;
   style?: TextStyle;
   textInputConfig?: TextInputProps;
 };
 
-const Input = ({ label, style, textInputConfig }: InputProps) => {
+const Input = ({ label, isValid, style, textInputConfig }: InputProps) => {
 
   const inputStyles: (ViewStyle | TextStyle)[] = [styles.input];
 
@@ -18,9 +19,13 @@ const Input = ({ label, style, textInputConfig }: InputProps) => {
     inputStyles.push(styles.inputMultiLine);
   };
 
+  if (isValid === false) {
+    inputStyles.push(styles.invalidInput);
+  };
+
   return (
     <View style={[styles.inputContainer, style]}>
-      <Text style={styles.label}>{label}</Text>
+      <Text style={[styles.label, !isValid && styles.invalidLabel]}>{label}</Text>
       <TextInput 
         style={StyleSheet.flatten(inputStyles)} 
         {...textInputConfig} 
@@ -55,5 +60,13 @@ const styles = StyleSheet.create({
   inputMultiLine: {
     minHeight: 100,
     textAlignVertical: 'top',
-  }
+  },
+  invalidLabel: {
+    color: Colors.alert,
+  },
+  invalidInput: {
+    borderColor: Colors.alert,
+    backgroundColor: Colors.background,
+    color: Colors.alert,
+  },
 });
