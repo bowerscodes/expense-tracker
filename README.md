@@ -1,24 +1,46 @@
-# Welcome to your Expo app 👋
+# Expense Tracker
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native expense tracking app built with Expo Router that helps you manage your daily expenses.
 
-## Get started
+## Features
 
-1. Install dependencies
+- **Track Expenses**: Add, edit, and delete expenses with amount, description, and date
+- **Recent & All Views**: View expenses from the last 7 days or see your complete expense history
+- **Real-time Sync**: Data synced with Firebase backend for persistence across devices
+- **Summary Display**: Quick overview of total spending for each period
+- **Intuitive UI**: Clean interface with navigation tabs and modal forms
 
+## Getting Started
+
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
+- Expo CLI (`npm install -g @expo/cli`)
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-2. Start the app
-
+3. Start the development server:
    ```bash
-    npx expo start
+   npm start
    ```
 
-In the output, you'll find options to open the app in a
+4. Run on your device:
+   - **iOS**: `npm run ios`
+   - **Android**: `npm run android`
+   - **Web**: `npm run web`
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Scan the QR code with the Expo Go app on your mobile device to run the app.
+
+## Built With
+
+- React Native & Expo
+- TypeScript
+- React Navigation
+- Firebase Realtime Database
+- Expo Router
